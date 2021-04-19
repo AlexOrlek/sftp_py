@@ -8,7 +8,7 @@ import stat
 
 
 class RemoteTransfer:
-    """A wrapper for paramiko Python SSH module"""
+    """A wrapper for paramiko sftp client"""
     TIMEOUT = 5
 
     def __init__(self, host, username, port=22, key=None, key_passphrase=None, password=None, downloaded_files=None):
@@ -43,7 +43,7 @@ class RemoteTransfer:
         """List directory contents in connected remote server
 
         Args:
-          remotepath (str): filepath to directory on remote server 
+          remotepath (str): filepath to directory on remote server
           show_hidden (bool): if True, show hidden files (.*) (Default value = True)
 
         Returns:
@@ -66,11 +66,11 @@ class RemoteTransfer:
         """Download remote file(s) to local directory
 
         Args:
-          remotepath (str): filepath to file or directory on remote server 
+          remotepath (str): filepath to file or directory on remote server
           localpath (str): filepath to local directory
           copy_hidden_files (bool): if True, hidden files (.*) are included in download (Default value = True)
           copy_symlink_files (bool): if True, symlink files are included in download (Default value = True)
-          remove (bool): if True, downloaded files are deleted (Default value = False)         
+          remove (bool): if True, downloaded files are deleted (Default value = False)
 
         """
         self.downloaded_files = []
@@ -142,7 +142,7 @@ class RemoteTransfer:
           localpath (str): filepath to local file or directory
           copy_hidden_files (bool): if True, hidden files (.*) are included in upload (Default value = True)
           copy_symlink_files (bool): if True, symlink files are included in upload (Default value = True)
-          remove (bool): if True, uploaded files are deleted (Default value = False)  
+          remove (bool): if True, uploaded files are deleted (Default value = False)
 
         """
         self.uploaded_files = []
@@ -213,7 +213,7 @@ class RemoteTransfer:
 
         Args:
           remotepath: filepath to remote location
-        
+
         Returns:
           bool
 
@@ -264,3 +264,4 @@ class RemoteTransfer:
         if self.sftp_client is not None:
             self.sftp_client.close()
             self.sftp_client = None
+        print('Disconnected from remote', self.host)
