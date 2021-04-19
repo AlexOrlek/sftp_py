@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+"""Main module"""
+
 import paramiko
 import os
 import socket
