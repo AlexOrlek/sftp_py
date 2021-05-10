@@ -26,8 +26,8 @@ class RemoteTransfer:
             self.client = paramiko.SSHClient()
             self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             if self.key is not None:
-                key = paramiko.RSAKey.from_private_key_file(self.key)
-            self.client.connect(hostname=self.host, username=self.username, port=self.port, password=self.password, pkey=key, timeout=self.TIMEOUT)  # should be RemoteConnect.TIMEOUT?
+                self.key = paramiko.RSAKey.from_private_key_file(self.key)
+            self.client.connect(hostname=self.host, username=self.username, port=self.port, password=self.password, pkey=self.key, passphrase=self.key_passphrase, timeout=self.TIMEOUT)
             self.sftp_client = self.client.open_sftp()
             print('Connected to remote', self.host)
         except Exception as e:

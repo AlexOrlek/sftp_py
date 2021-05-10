@@ -1,4 +1,4 @@
-sftp_py is a Python package for transferring files between remote and local directories using the [paramiko](http://www.paramiko.org/) sftp client<br>
+sftp_py is a Python package for transferring files between remote and local directories using the [paramiko](http://www.paramiko.org/) sftp client. After transfer, downloaded/uploaded files can be optionally deleted from the remote/local source directory. Only files (not directories) are transferred - there is no option to recursively transfer nested directories.<br>
 
 # Installation 
 
@@ -18,7 +18,7 @@ pip3 install .
 
 sftp_py can be used within a Python script as follows:<br>
 `from sftp_py.transfer import RemoteTransfer`<br>
-`RemoteTransfer([`*`arguments...`*`])`<br>
+`conn = RemoteTransfer([`*`arguments...`*`])`<br>
 <br>
 
 ### To download from a remote server:
