@@ -183,7 +183,7 @@ class RemoteTransfer:
                             path_sep = '/'
                         except:
                             path_sep = '\\'
-                        _remotepath = path_sep.join([remotepath, _localfile])
+                        _remotepath = path_sep.join([linuxpath, _localfile])
                         self.sftp_client.put(localpath, _remotepath)
                         self.uploaded_files.append(localpath)
                     else:
