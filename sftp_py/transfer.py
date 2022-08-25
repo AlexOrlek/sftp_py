@@ -87,9 +87,8 @@ class RemoteTransfer:
                     for indx, item in enumerate(dir_contents):
                         # determine remote file separator
                         if indx == 0:
-                            linuxpath = '/'.join([remotepath, item])
                             try:
-                                _lstat_out = self.sftp_client.lstat(linuxpath)
+                                _lstat_out = self.sftp_client.lstat(remotepath)
                                 path_sep = '/'
                             except:
                                 path_sep = '\\'
@@ -177,9 +176,8 @@ class RemoteTransfer:
                 else:
                     if os.path.isfile(localpath):
                         _localfile = os.path.split(localpath)[-1]
-                        linuxpath = '/'.join([remotepath, _localfile])
                         try:
-                            _lstat_out = self.sftp_client.lstat(linuxpath)
+                            _lstat_out = self.sftp_client.lstat(remotepath)
                             path_sep = '/'
                         except:
                             path_sep = '\\'
